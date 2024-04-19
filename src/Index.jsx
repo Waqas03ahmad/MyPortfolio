@@ -14,6 +14,7 @@ import MenuIcon from "@mui/icons-material/Menu";
 import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
 import Button from "@mui/material/Button";
+import { Container } from "@mui/material";
 
 const drawerWidth = 240;
 const navItems = ["Home", "About", "Contact"];
@@ -48,6 +49,7 @@ function Header(props) {
     window !== undefined ? () => window().document.body : undefined;
 
   return (
+    <Container>
     <Box sx={{ display: "flex" }}>
       <CssBaseline />
       <AppBar component="nav">
@@ -138,6 +140,7 @@ function Header(props) {
         </Typography>
       </Box>
     </Box>
+    </Container>
   );
 }
 
