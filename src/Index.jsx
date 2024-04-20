@@ -14,10 +14,27 @@ import MenuIcon from "@mui/icons-material/Menu";
 import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
 import Button from "@mui/material/Button";
-import { Container } from "@mui/material";
+import { styled } from "@mui/material/styles";
+import Grid from "@mui/material/Unstable_Grid2";
+import { Container, ListItemIcon, useMediaQuery } from "@mui/material";
+import { NavLink } from "react-router-dom";
+import MoreIcon from "@mui/icons-material/MoreVert";
+import { ModeToggle } from "./App";
+
+const Item = styled(Box)(({ theme }) => ({
+  backgroundColor: theme.palette.mode === "dark" ? "#1A2027" : "#fff",
+  ...theme.typography.body2,
+  color: theme.palette.text.secondary,
+}));
 
 const drawerWidth = 240;
-const navItems = ["Home", "About", "Contact"];
+const navItems = [
+  { name: "Home", to: "#home" },
+  { name: "Services", to: "#service" },
+  { name: "Projects", to: "#project" },
+  { name: "Technology", to: "#technology" },
+  { name: "About", to: "#about" },
+];
 
 function Header(props) {
   const { window } = props;
@@ -30,14 +47,19 @@ function Header(props) {
   const drawer = (
     <Box onClick={handleDrawerToggle} sx={{ textAlign: "center" }}>
       <Typography variant="h6" sx={{ my: 2 }}>
-        MUI
+        SoftTech
       </Typography>
       <Divider />
       <List>
         {navItems.map((item) => (
-          <ListItem key={item} disablePadding>
+          <ListItem
+            key={item.to}
+            disablePadding
+            components={NavLink}
+            to={item.to}
+          >
             <ListItemButton sx={{ textAlign: "center" }}>
-              <ListItemText primary={item} />
+              <ListItemText primary={item.name} />
             </ListItemButton>
           </ListItem>
         ))}
@@ -47,37 +69,47 @@ function Header(props) {
 
   const container =
     window !== undefined ? () => window().document.body : undefined;
-
+    
   return (
-    <Container>
     <Box sx={{ display: "flex" }}>
       <CssBaseline />
       <AppBar component="nav">
-        <Toolbar>
-          <IconButton
-            color="inherit"
-            aria-label="open drawer"
-            edge="start"
-            onClick={handleDrawerToggle}
-            sx={{ mr: 2, display: { sm: "none" } }}
-          >
-            <MenuIcon />
-          </IconButton>
-          <Typography
-            variant="h6"
-            component="div"
-            sx={{ flexGrow: 1, display: { xs: "none", sm: "block" } }}
-          >
-            MUI
-          </Typography>
-          <Box sx={{ display: { xs: "none", sm: "block" } }}>
-            {navItems.map((item) => (
-              <Button key={item} sx={{ color: "#fff" }}>
-                {item}
-              </Button>
-            ))}
-          </Box>
-        </Toolbar>
+        <Container>
+          <Toolbar>
+            <IconButton
+              color="inherit"
+              aria-label="open drawer"
+              edge="start"
+              onClick={handleDrawerToggle}
+              sx={{ mr: 2, display: { sm: "none" } }}
+            >
+              <MenuIcon />
+            </IconButton>
+            <Typography
+              variant="h6"
+              component="div"
+              sx={{ flexGrow: 1, display: { xs: "none", sm: "block" } }}
+            >
+              SoftTech
+            </Typography>
+            <Box sx={{ display: { xs: "none", sm: "block" } }}>
+              {navItems.map((item) => (
+                <Button key={item.to} sx={{ color: "#fff" }} href={item.to}>
+                  {item.name}
+                </Button>
+              ))}
+            </Box>
+            <IconButton
+              color="inherit"
+              sx={{ display: { sm: "none" }, marginLeft: "auto" }}
+            >
+              <MoreIcon />
+            </IconButton>
+            <ListItemIcon color="inherit">
+              <ModeToggle />
+            </ListItemIcon>
+          </Toolbar>
+        </Container>
       </AppBar>
       <nav>
         <Drawer
@@ -99,48 +131,85 @@ function Header(props) {
           {drawer}
         </Drawer>
       </nav>
-      <Box component="main" sx={{ p: 3 }}>
-        <Toolbar />
-        <Typography>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Similique
-          unde fugit veniam eius, perspiciatis sunt? Corporis qui ducimus
-          quibusdam, aliquam dolore excepturi quae. Distinctio enim at eligendi
-          perferendis in cum quibusdam sed quae, accusantium et aperiam? Quod
-          itaque exercitationem, at ab sequi qui modi delectus quia corrupti
-          alias distinctio nostrum. Minima ex dolor modi inventore sapiente
-          necessitatibus aliquam fuga et. Sed numquam quibusdam at officia
-          sapiente porro maxime corrupti perspiciatis asperiores, exercitationem
-          eius nostrum consequuntur iure aliquam itaque, assumenda et! Quibusdam
-          temporibus beatae doloremque voluptatum doloribus soluta accusamus
-          porro reprehenderit eos inventore facere, fugit, molestiae ab officiis
-          illo voluptates recusandae. Vel dolor nobis eius, ratione atque
-          soluta, aliquam fugit qui iste architecto perspiciatis. Nobis,
-          voluptatem! Cumque, eligendi unde aliquid minus quis sit debitis
-          obcaecati error, delectus quo eius exercitationem tempore. Delectus
-          sapiente, provident corporis dolorum quibusdam aut beatae repellendus
-          est labore quisquam praesentium repudiandae non vel laboriosam quo ab
-          perferendis velit ipsa deleniti modi! Ipsam, illo quod. Nesciunt
-          commodi nihil corrupti cum non fugiat praesentium doloremque
-          architecto laborum aliquid. Quae, maxime recusandae? Eveniet dolore
-          molestiae dicta blanditiis est expedita eius debitis cupiditate porro
-          sed aspernatur quidem, repellat nihil quasi praesentium quia eos,
-          quibusdam provident. Incidunt tempore vel placeat voluptate iure
-          labore, repellendus beatae quia unde est aliquid dolor molestias
-          libero. Reiciendis similique exercitationem consequatur, nobis placeat
-          illo laudantium! Enim perferendis nulla soluta magni error, provident
-          repellat similique cupiditate ipsam, et tempore cumque quod! Qui, iure
-          suscipit tempora unde rerum autem saepe nisi vel cupiditate iusto.
-          Illum, corrupti? Fugiat quidem accusantium nulla. Aliquid inventore
-          commodi reprehenderit rerum reiciendis! Quidem alias repudiandae eaque
-          eveniet cumque nihil aliquam in expedita, impedit quas ipsum nesciunt
-          ipsa ullam consequuntur dignissimos numquam at nisi porro a, quaerat
-          rem repellendus. Voluptates perspiciatis, in pariatur impedit, nam
-          facilis libero dolorem dolores sunt inventore perferendis, aut
-          sapiente modi nesciunt.
-        </Typography>
-      </Box>
+      <Container>
+        <Box
+          component="main"
+          sx={{
+            p: 3,
+          }}
+        >
+          <Toolbar />
+          <Grid container spacing={2}>
+            <Grid xs={12} id="home">
+              <Item elevation={4}>
+                <Grid
+                  container
+                  sx={{
+                    display: "flex",
+                    justifyContent: "center",
+                    alignItems: "center",
+                  }}
+                >
+                  <Grid item="true" xs={12} sm={7}>
+                    <Box sx={{ textAlign: { xs: "center", sm: "start" } }}>
+                      <Typography variant={'h3'}>
+                        Lets scale up your business with professional frontend
+                        developer...
+                      </Typography>
+                      <Typography marginY={1}>
+                        {" "}
+                        Get professional frontEnd Developer who will scale up
+                        your business with creative, innovative, and modern user
+                        interface. I am Waqas Ahmad FrontEnd developer with 1
+                        years of experience. I develope User interface as per
+                        your requirements. Let me to make your client happy.
+                      </Typography>
+                      <Typography>
+                        <small>For more detail down load resume</small>
+                      </Typography>
+                      <Button variant="contained" sx={{ marginY: 1 }}>
+                        Resume
+                      </Button>
+                    </Box>
+                  </Grid>
+                  <Grid
+                    item="true"
+                    xs={12}
+                    sm={5}
+                    sx={{
+                      display: "flex",
+                      justifyContent: { xs: "center", sm: "end" },
+                    }}
+                  >
+                    <img src="../../../public/hero1.png" alt="waqas" />
+                  </Grid>
+                </Grid>
+              </Item>
+            </Grid>
+            <Grid xs={12}>
+              <Item elevation={4} id="service">
+                Service
+              </Item>
+            </Grid>
+            <Grid xs={12}>
+              <Item elevation={4} id="project">
+                Project
+              </Item>
+            </Grid>
+            <Grid xs={12}>
+              <Item elevation={4} id="technology">
+                Technology
+              </Item>
+            </Grid>
+            <Grid xs={12}>
+              <Item elevation={4} id="about">
+                About
+              </Item>
+            </Grid>
+          </Grid>
+        </Box>
+      </Container>
     </Box>
-    </Container>
   );
 }
 
