@@ -23,6 +23,20 @@ import { ModeToggle } from "./App";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
+import About from "./pages/about/About";
+import Technology from "./pages/technology/Technology";
+// import { loadSlim } from "tsparticles-slim";
+// import Particles from "react-particles";
+// import { Paper } from "@mui/material";
+// import { CgWebsite } from "react-icons/cg";
+// import { SiCodesignal } from "react-icons/si";
+// import { IoPaperPlaneOutline } from "react-icons/io5";
+// import { GrUserAdmin } from "react-icons/gr";
+// import { MdOutlineManageAccounts } from "react-icons/md";
+// import { motion } from "framer-motion";
+// import AOS from "aos";
+// import "aos/dist/aos.css";
+// import { useEffect } from "react";
 
 const Item = styled(Box)(({ theme }) => ({
   backgroundColor: theme.palette.mode === "dark" ? null : "#fff",
@@ -78,6 +92,9 @@ function Header(props) {
 
   const container =
     window !== undefined ? () => window().document.body : undefined;
+  // const particlesInit = React.useCallback(async (engine) => {
+  //   await loadSlim(engine);
+  // }, []);
 
   return (
     <Box sx={{ display: "flex" }}>
@@ -162,6 +179,120 @@ function Header(props) {
                     alignItems: "center",
                   }}
                 >
+                  {/* <Particles
+                  id="tsparticles"
+                  init={particlesInit}
+                  options={{
+                    particles: {
+                      number: {
+                        value: 80,
+                        density: {
+                          enable: true,
+                          value_area: 2130.6986324071363,
+                        },
+                      },
+                      color: {
+                        value: "#00f0ff",
+                      },
+                      shape: {
+                        type: "circle",
+                        stroke: {
+                          width: 0,
+                          color: "#000000",
+                        },
+                        polygon: {
+                          nb_sides: 5,
+                        },
+                        image: {
+                          src: "img/github.svg",
+                          width: 100,
+                          height: 100,
+                        },
+                      },
+                      opacity: {
+                        value: 0.5,
+                        random: false,
+                        anim: {
+                          enable: false,
+                          speed: 1,
+                          opacity_min: 0.1,
+                          sync: false,
+                        },
+                      },
+                      size: {
+                        value: 3,
+                        random: true,
+                        anim: {
+                          enable: false,
+                          speed: 40,
+                          size_min: 0.1,
+                          sync: false,
+                        },
+                      },
+                      line_linked: {
+                        enable: true,
+                        distance: 150,
+                        color: "#09e2ff",
+                        opacity: 0.4,
+                        width: 1,
+                      },
+                      move: {
+                        enable: true,
+                        speed: 3,
+                        direction: "none",
+                        random: false,
+                        straight: false,
+                        out_mode: "out",
+                        bounce: false,
+                        attract: {
+                          enable: false,
+                          rotateX: 600,
+                          rotateY: 1200,
+                        },
+                      },
+                    },
+                    interactivity: {
+                      detect_on: "canvas",
+                      events: {
+                        onhover: {
+                          enable: false,
+                          mode: "repulse",
+                        },
+                        onclick: {
+                          enable: false,
+                          mode: "push",
+                        },
+                        resize: true,
+                      },
+                      modes: {
+                        grab: {
+                          distance: 400,
+                          line_linked: {
+                            opacity: 1,
+                          },
+                        },
+                        bubble: {
+                          distance: 400,
+                          size: 40,
+                          duration: 2,
+                          opacity: 8,
+                          speed: 3,
+                        },
+                        repulse: {
+                          distance: 200,
+                          duration: 0.4,
+                        },
+                        push: {
+                          particles_nb: 4,
+                        },
+                        remove: {
+                          particles_nb: 2,
+                        },
+                      },
+                    },
+                    retina_detect: true,
+                  }}
+                ></Particles> */}
                   <Grid item="true" xs={12} sm={7}>
                     <Box sx={{ textAlign: { xs: "center", sm: "start" } }}>
                       <Typography
@@ -189,7 +320,7 @@ function Header(props) {
                       <Typography>
                         <small>For more detail down load resume</small>
                       </Typography>
-                      <Button variant="contained" sx={{ marginY: 1 }}>
+                      <Button variant="contained" sx={{ marginY: 2 }}>
                         Resume
                       </Button>
                     </Box>
@@ -201,13 +332,18 @@ function Header(props) {
                     sx={{
                       display: "flex",
                       justifyContent: { xs: "center", sm: "end" },
+                      marginBottom: 7,
+                      marginTop: { xs: 5, sm: 0 },
                     }}
                   >
-                    <img src="../../../public/hero1.png" alt="waqas" />
+                    <img
+                      src="https://res.cloudinary.com/dt6z3lqko/image/upload/v1713669236/hero1_rdihos.png"
+                      alt="waqas"
+                    />
                   </Grid>
                 </Grid>
               </Item>
-              <Divider sx={{ marginTop: 5 }} />
+              <Divider />
             </Grid>
             <Grid xs={12} mt={5}>
               <Item1 elevation={4} id="service">
@@ -318,16 +454,19 @@ function Header(props) {
                   </Grid>
                 </Box>
               </Item1>
+              <Divider sx={{ mt: 8 }} />
             </Grid>
             <Grid xs={12}>
               <Item1 elevation={4} id="project">
-                Project
+                <About />
+                <Divider sx={{ mt: 8 }} />
               </Item1>
             </Grid>
             <Grid xs={12}>
               <Item1 elevation={4} id="technology">
-                Technology
+                <Technology/>
               </Item1>
+              <Divider sx={{ mt: 8 }} />
             </Grid>
             <Grid xs={12}>
               <Item1 elevation={4} id="about">
