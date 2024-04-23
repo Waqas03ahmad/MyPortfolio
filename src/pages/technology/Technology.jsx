@@ -7,10 +7,10 @@ import Card from "@mui/joy/Card";
 import StarIcon from "@mui/icons-material/Star";
 import CardContent from "@mui/joy/CardContent";
 import Typography from "@mui/joy/Typography";
-// import { motion } from "framer-motion";
-// import AOS from "aos";
-// import "aos/dist/aos.css";
-// import { useEffect } from "react";
+import { motion } from "framer-motion";
+import AOS from "aos";
+import "aos/dist/aos.css";
+import { useEffect } from "react";
 
 const data = [
   {
@@ -81,9 +81,9 @@ const data = [
 ];
 
 const Technology = () => {
-  //   useEffect(() => {
-  //     AOS.init({ duration: 500 });
-  //   }, []);
+  useEffect(() => {
+    AOS.init({ duration: 500 });
+  }, []);
 
   const Item = styled(Paper)(({ theme }) => ({
     ...theme.typography.body2,
@@ -95,87 +95,80 @@ const Technology = () => {
       sx={{
         display: "flex",
         justifyContent: "center",
+        padding: "20px",
       }}
     >
       <Grid container spacing={3} columns={{ xs: 4, sm: 8, md: 12 }}>
-        <Grid
-          item
-          xs={4}
-          sm={8}
-          md={12}
-          marginBottom={"10px"}
-          textAlign={"center"}
-        >
-          <Typography>Technology</Typography>
-          <Typography>
-            <small>Technology I commanded over</small>
-          </Typography>
-        </Grid>
+        <Box textAlign={'center'} width={"100%"}>
+          <Typography  variant="h1" gutterBottom>Technologies</Typography>
+        </Box>
         {data.map((value, index) => (
           <Grid item xs={4} sm={8} md={4} key={index} data-aos="zoom-in">
-            {/* <motion.div whileHover={{ scale: 1.02 }}> */}
-            <Item
-              sx={{
-                border: 0.5,
-                borderColor: "transparent",
-                "&:hover": {
-                  borderColor: (theme) =>
-                    theme.palette.mode === "dark" ? "white" : "gray",
-                },
-              }}
-            >
-              <Card
+            <motion.div whileHover={{ scale: 1.02 }}>
+              <Item
                 sx={{
-                  width: "auto",
-                  maxWidth: "100%",
-                  boxShadow: "lg",
-                  height: "300px",
+                  border: 0.5,
+                  borderColor: "transparent",
+                  "&:hover": {
+                    borderColor: (theme) =>
+                      theme.palette.mode === "dark" ? "white" : "gray",
+                  },
                 }}
               >
-                <CardContent sx={{ alignItems: "center", textAlign: "center" }}>
-                  <Avatar src={value.icon} sx={{ "--Avatar-size": "4rem" }} />
-                  <Chip
-                    size="sm"
-                    variant="soft"
-                    color="primary"
-                    sx={{
-                      mt: -1,
-                      mb: 1,
-                      border: "3px solid",
-                      borderColor: "background.surface",
-                    }}
+                <Card
+                  sx={{
+                    width: "auto",
+                    maxWidth: "100%",
+                    boxShadow: "lg",
+                    height: "300px",
+                  }}
+                >
+                  <CardContent
+                    sx={{ alignItems: "center", textAlign: "center" }}
                   >
-                    PRO
-                  </Chip>
-                  <Typography level="title-lg">{value.name}</Typography>
-                  <Typography level="body-sm" sx={{ maxWidth: "24ch" }}>
-                    {value.discription}
-                  </Typography>
-                  <Box
-                    sx={{
-                      display: "flex",
-                      gap: 2,
-                      mt: 2,
-                      "& > button": { borderRadius: "2rem" },
-                    }}
-                  >
-                    <Rating
-                      name="text-feedback"
-                      value={value.stars}
-                      readOnly
-                      precision={0.5}
-                      emptyIcon={
-                        <StarIcon
-                          style={{ opacity: 0.55 }}
-                          fontSize="inherit"
-                        />
-                      }
-                    />
-                  </Box>
-                </CardContent>
-              </Card>
-            </Item>
-            {/* </motion.div> */}
+                    <Avatar src={value.icon} sx={{ "--Avatar-size": "4rem" }} />
+                    <Chip
+                      size="sm"
+                      variant="soft"
+                      color="primary"
+                      sx={{
+                        mt: -1,
+                        mb: 1,
+                        border: "3px solid",
+                        borderColor: "background.surface",
+                      }}
+                    >
+                      PRO
+                    </Chip>
+                    <Typography level="title-lg">{value.name}</Typography>
+                    <Typography level="body-sm" sx={{ maxWidth: "24ch" }}>
+                      {value.discription}
+                    </Typography>
+                    <Box
+                      sx={{
+                        display: "flex",
+                        gap: 2,
+                        mt: 2,
+                        "& > button": { borderRadius: "2rem" },
+                      }}
+                    >
+                      <Rating
+                        name="text-feedback"
+                        value={value.stars}
+                        readOnly
+                        precision={0.5}
+                        emptyIcon={
+                          <StarIcon
+                            style={{ opacity: 0.55 }}
+                            fontSize="inherit"
+                          />
+                        }
+                      />
+                    </Box>
+                  </CardContent>
+                </Card>
+              </Item>
+            </motion.div>
           </Grid>
         ))}
       </Grid>

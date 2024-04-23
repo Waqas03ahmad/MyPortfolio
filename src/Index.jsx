@@ -20,24 +20,24 @@ import { Container, ListItemIcon } from "@mui/material";
 import { NavLink } from "react-router-dom";
 import MoreIcon from "@mui/icons-material/MoreVert";
 import { ModeToggle } from "./App";
-import FavoriteIcon from "@mui/icons-material/Favorite";
 import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 import About from "./pages/about/About";
 import Technology from "./pages/technology/Technology";
-import Resume from '../public/resume.pdf'
+import Resume from "../public/resume.pdf";
+import Footer from "./pages/footer/Footer";
 // import { loadSlim } from "tsparticles-slim";
 // import Particles from "react-particles";
 // import { Paper } from "@mui/material";
-// import { CgWebsite } from "react-icons/cg";
-// import { SiCodesignal } from "react-icons/si";
-// import { IoPaperPlaneOutline } from "react-icons/io5";
-// import { GrUserAdmin } from "react-icons/gr";
-// import { MdOutlineManageAccounts } from "react-icons/md";
-// import { motion } from "framer-motion";
-// import AOS from "aos";
-// import "aos/dist/aos.css";
-// import { useEffect } from "react";
+import { CgWebsite } from "react-icons/cg";
+import { SiCodesignal } from "react-icons/si";
+import { IoPaperPlaneOutline } from "react-icons/io5";
+import { GrUserAdmin } from "react-icons/gr";
+import { MdOutlineManageAccounts } from "react-icons/md";
+import { motion } from "framer-motion";
+import AOS from "aos";
+import "aos/dist/aos.css";
+import { useEffect } from "react";
 
 const Item = styled(Box)(({ theme }) => ({
   backgroundColor: theme.palette.mode === "dark" ? null : "#fff",
@@ -96,7 +96,9 @@ function Header(props) {
   // const particlesInit = React.useCallback(async (engine) => {
   //   await loadSlim(engine);
   // }, []);
-
+  useEffect(() => {
+    AOS.init({ duration: 600 });
+  }, []);
   return (
     <Box sx={{ display: "flex" }}>
       <CssBaseline />
@@ -372,87 +374,89 @@ function Header(props) {
                     {[
                       {
                         name: "UI Developement",
-                        icon: <FavoriteIcon />,
+                        icon: <CgWebsite size={30} />,
                         description:
                           "We develope innovative, professoinal and best-performance websites, dashboards and more...",
                       },
                       {
                         name: "Design-Driven",
-                        icon: <FavoriteIcon />,
+                        icon: <SiCodesignal size={30} />,
                         description:
                           "Creating task-driven, and design-driven according to given template using react...",
                       },
                       {
                         name: "Management",
-                        icon: <FavoriteIcon />,
+                        icon: <MdOutlineManageAccounts size={30} />,
                         description:
                           "We create and manage your ecomerce, educational and other websites professionally...",
                       },
                       {
                         name: "Creativity",
-                        icon: <FavoriteIcon />,
+                        icon: <IoPaperPlaneOutline size={30} />,
                         description:
                           "Develope Your UI creatively and professionally with react, MUI, and AI as per your requirments.",
                       },
                       {
                         name: "Admin Dashboard",
-                        icon: <FavoriteIcon />,
+                        icon: <GrUserAdmin size={30} />,
                         description:
                           "Develope UI Administration dashboard, Educational, Ecommerce and other for your business...",
                       },
                       {
                         name: "Ecommerce Website",
-                        icon: <FavoriteIcon />,
+                        icon: <CgWebsite size={30} />,
                         description:
                           "Innovative, creative and professional Ui for your Ecommerce website and products...",
                       },
                     ].map((val, index) => (
                       <Grid xs={4} sm={4} md={4} key={index} data-aos="zoom-in">
-                        <Item1
-                          elevation={3}
-                          sx={{
-                            border: 0.5,
-                            borderColor: "transparent",
-                            "&:hover": {
-                              borderColor: (theme) =>
-                                theme.palette.mode === "dark"
-                                  ? "white"
-                                  : "gray",
-                            },
-                          }}
-                        >
-                          <Card
+                        <motion.div whileHover={{ scale: 1.02 }}>
+                          <Item
+                            elevation={3}
                             sx={{
-                              width: "auto",
-                              height: {
-                                xs: "200px",
-                                sm: "270px",
-                                lg: "220px",
+                              border: 0.5,
+                              borderColor: "transparent",
+                              "&:hover": {
+                                borderColor: (theme) =>
+                                  theme.palette.mode === "dark"
+                                    ? "white"
+                                    : "gray",
                               },
                             }}
                           >
-                            <CardContent>
-                              <Box
-                                sx={{
-                                  display: "flex",
-                                  justifyContent: "center",
-                                  mb: "10px",
-                                }}
-                              >
-                                {val.icon}
-                              </Box>
-                              <Typography variant="h5" component="div">
-                                {val.name}
-                              </Typography>
-                              <Typography
-                                sx={{ mb: 1.5 }}
-                                color="text.secondary"
-                              >
-                                {val.description}
-                              </Typography>
-                            </CardContent>
-                          </Card>
-                        </Item1>
+                            <Card
+                              sx={{
+                                width: "auto",
+                                height: {
+                                  xs: "200px",
+                                  sm: "270px",
+                                  lg: "220px",
+                                },
+                              }}
+                            >
+                              <CardContent>
+                                <Box
+                                  sx={{
+                                    display: "flex",
+                                    justifyContent: "center",
+                                    mb: "10px",
+                                  }}
+                                >
+                                  {val.icon}
+                                </Box>
+                                <Typography variant="h5" component="div">
+                                  {val.name}
+                                </Typography>
+                                <Typography
+                                  sx={{ mb: 1.5 }}
+                                  color="text.secondary"
+                                >
+                                  {val.description}
+                                </Typography>
+                              </CardContent>
+                            </Card>
+                          </Item>
+                        </motion.div>
                       </Grid>
                     ))}
                   </Grid>
@@ -474,7 +478,7 @@ function Header(props) {
             </Grid>
             <Grid xs={12}>
               <Item1 elevation={4} id="about">
-                About
+                <Footer />
               </Item1>
             </Grid>
           </Grid>
