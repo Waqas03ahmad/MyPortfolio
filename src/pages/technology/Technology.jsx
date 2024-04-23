@@ -96,6 +96,7 @@ const Technology = () => {
       sx={{
         display: "flex",
         justifyContent: "center",
+        mt:5
       }}
     >
       <Grid container spacing={3} columns={{ xs: 4, sm: 8, md: 12 }}>
