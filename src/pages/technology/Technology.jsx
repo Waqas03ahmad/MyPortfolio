@@ -7,6 +7,7 @@ import Card from "@mui/joy/Card";
 import StarIcon from "@mui/icons-material/Star";
 import CardContent from "@mui/joy/CardContent";
 import Typography from "@mui/joy/Typography";
+import {Typography as Muitypogoraphy} from "@mui/material";
 import { motion } from "framer-motion";
 import AOS from "aos";
 import "aos/dist/aos.css";
@@ -98,9 +99,10 @@ const Technology = () => {
       }}
     >
       <Grid container spacing={3} columns={{ xs: 4, sm: 8, md: 12 }}>
-        <Box textAlign={'center'} width={"100%"}>
-          <Typography  variant="h1" gutterBottom>Technologies</Typography>
-        </Box>
+        <Grid item xs={12} marginBottom={"10px"} textAlign={"center"}>
+          <Muitypogoraphy variant="h4">My Services</Muitypogoraphy>
+          <Muitypogoraphy variant="h6">You will get the bellow services</Muitypogoraphy>
+        </Grid>
         {data.map((value, index) => (
           <Grid item xs={4} sm={8} md={4} key={index} data-aos="zoom-in">
             <motion.div whileHover={{ scale: 1.02 }}>
