@@ -1,16 +1,15 @@
-import React from 'react';
 import { makeStyles } from '@mui/styles';
 import { Typography, Link, Container } from '@mui/material';
 
 const useStyles = makeStyles((theme) => ({
   footer: {
     padding: theme.spacing(3, 2),
-    marginTop: 'auto',
+    marginTop: "auto",
     backgroundColor: theme.palette.primary.main,
     color: theme.palette.primary.contrastText,
   },
   links: {
-    '& > *': {
+    "& > *": {
       margin: theme.spacing(1),
     },
   },

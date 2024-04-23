@@ -25,7 +25,7 @@ import CardContent from "@mui/material/CardContent";
 import About from "./pages/about/About";
 import Technology from "./pages/technology/Technology";
 import Resume from "../public/resume.pdf";
-import Footer from "./pages/footer/Footer";
+// import Footer from "./pages/footer/Footer";
 // import { loadSlim } from "tsparticles-slim";
 // import Particles from "react-particles";
 // import { Paper } from "@mui/material";
@@ -478,7 +478,7 @@ function Header(props) {
             </Grid>
             <Grid xs={12}>
               <Item1 elevation={4} id="about">
-                <Footer />
+                {/* <Footer /> */}
               </Item1>
             </Grid>
           </Grid>
