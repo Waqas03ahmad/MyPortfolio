@@ -25,6 +25,7 @@ import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 import About from "./pages/about/About";
 import Technology from "./pages/technology/Technology";
+import Resume from '../public/resume.pdf'
 // import { loadSlim } from "tsparticles-slim";
 // import Particles from "react-particles";
 // import { Paper } from "@mui/material";
@@ -310,7 +311,6 @@ function Header(props) {
                         developer...
                       </Typography>
                       <Typography marginY={1}>
-                        {" "}
                         Get professional frontEnd Developer who will scale up
                         your business with creative, innovative, and modern user
                         interface. I am Waqas Ahmad FrontEnd developer with 1
@@ -320,7 +320,12 @@ function Header(props) {
                       <Typography>
                         <small>For more detail down load resume</small>
                       </Typography>
-                      <Button variant="contained" sx={{ marginY: 2 }}>
+                      <Button
+                        variant="contained"
+                        href={Resume}
+                        download={Resume}
+                        sx={{ marginY: 2 }}
+                      >
                         Resume
                       </Button>
                     </Box>
@@ -332,7 +337,6 @@ function Header(props) {
                     sx={{
                       display: "flex",
                       justifyContent: { xs: "center", sm: "end" },
-                      marginBottom: 7,
                       marginTop: { xs: 5, sm: 0 },
                     }}
                   >
@@ -343,7 +347,7 @@ function Header(props) {
                   </Grid>
                 </Grid>
               </Item>
-              <Divider />
+              <Divider sx={{ mt: 5 }} />
             </Grid>
             <Grid xs={12} mt={5}>
               <Item1 elevation={4} id="service">
@@ -464,7 +468,7 @@ function Header(props) {
             </Grid>
             <Grid xs={12}>
               <Item1 elevation={4} id="technology">
-                <Technology/>
+                <Technology />
               </Item1>
               <Divider sx={{ mt: 8 }} />
             </Grid>
