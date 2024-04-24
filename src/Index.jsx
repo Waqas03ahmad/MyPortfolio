@@ -24,6 +24,7 @@ import AOS from "aos";
 import "aos/dist/aos.css";
 import { useEffect } from "react";
 import Footer from "./pages/footer/Footer";
+import SpeedDial1 from "./SpeedDail";
 
 const Item = styled(Box)(({ theme }) => ({
   backgroundColor: theme.palette.mode === "dark" ? null : "#fff",
@@ -279,6 +280,7 @@ function Header() {
               </Item1>
             </Grid>
           </Grid>
+          <SpeedDial1/>
         </Box>
       </Container>
     </Box>
