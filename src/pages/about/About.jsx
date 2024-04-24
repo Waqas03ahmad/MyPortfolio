@@ -1,5 +1,5 @@
 import Box from "@mui/material/Box";
-import { Avatar,  Typography } from "@mui/material";
+import { Avatar, Typography } from "@mui/material";
 import { styled } from "@mui/material/styles";
 import Grid from "@mui/material/Unstable_Grid2";
 import AspectRatio from "@mui/joy/AspectRatio";
@@ -47,7 +47,7 @@ const About = () => {
                     display: "flex",
                     position: "relative",
                     justifyContent: "center",
-                    width: "100%",
+                    maxWidth: "100%",
                     height: "30vh",
                     alignItems: "center",
                     backgroundImage: `url(https://res.cloudinary.com/dt6z3lqko/image/upload/v1713669248/aboutme_ktlebj.jpg)`,
@@ -60,7 +60,7 @@ const About = () => {
                       position: "absolute",
                       top: 0,
                       left: 0,
-                      width: "100%",
+                      maxWidth: "100%",
                       height: "100%",
                       backgroundColor: "rgba(0, 0, 0, 0.5)", // Adjust color and opacity here
                     }}
@@ -89,7 +89,7 @@ const About = () => {
                   sx={{
                     textAlign: "center",
                     alignItems: "center",
-                    width: "auto",
+                    maxWidth: "100%",
                     // to make the demo resizable
                     overflow: "auto",
                     "--icon-size": "100px",
@@ -113,7 +113,7 @@ const About = () => {
                       <Avatar
                         alt="Remy Sharp"
                         src="https://res.cloudinary.com/dt6z3lqko/image/upload/v1713669246/waqas_x0ouxy.jpg"
-                        sx={{ width: 56, height: 56 }}
+                        sx={{maxWidth:"100%", height: 56 }}
                       />
                     </AspectRatio>
                   </CardOverflow>
@@ -256,7 +256,7 @@ const About = () => {
                       <Avatar
                         alt="Remy Sharp"
                         src="https://res.cloudinary.com/dt6z3lqko/image/upload/v1713669248/hero4_aldzeq.jpg"
-                        sx={{ width: 56, height: 56 }}
+                        sx={{ maxWidth: "100%", height: "auto" }}
                       />
                     </AspectRatio>
                   </CardOverflow>

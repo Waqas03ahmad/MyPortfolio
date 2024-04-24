@@ -101,8 +101,8 @@ const Technology = () => {
     >
       <Grid container spacing={3} columns={{ xs: 4, sm: 8, md: 12 }}>
         <Grid item xs={12} marginBottom={"10px"} textAlign={"center"}>
-          <Muitypogoraphy variant="h4">My Services</Muitypogoraphy>
-          <Muitypogoraphy variant="h6">You will get the bellow services</Muitypogoraphy>
+          <Muitypogoraphy variant="h4">Technologies</Muitypogoraphy>
+          <Muitypogoraphy variant="h6">Expert in the following Technologies</Muitypogoraphy>
         </Grid>
         {data.map((value, index) => (
           <Grid item xs={4} sm={8} md={4} key={index} data-aos="zoom-in">

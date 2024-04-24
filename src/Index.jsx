@@ -1,34 +1,19 @@
-import * as React from "react";
-import PropTypes from "prop-types";
 import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
 import CssBaseline from "@mui/material/CssBaseline";
 import Divider from "@mui/material/Divider";
-import Drawer from "@mui/material/Drawer";
-import IconButton from "@mui/material/IconButton";
-import List from "@mui/material/List";
-import ListItem from "@mui/material/ListItem";
-import ListItemButton from "@mui/material/ListItemButton";
-import ListItemText from "@mui/material/ListItemText";
-import MenuIcon from "@mui/icons-material/Menu";
 import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
 import Button from "@mui/material/Button";
 import { styled } from "@mui/material/styles";
 import Grid from "@mui/material/Unstable_Grid2";
-import { Container, ListItemIcon } from "@mui/material";
-import { NavLink } from "react-router-dom";
-import MoreIcon from "@mui/icons-material/MoreVert";
+import { Container, ListItemIcon, useMediaQuery } from "@mui/material";
 import { ModeToggle } from "./App";
 import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 import About from "./pages/about/About";
 import Technology from "./pages/technology/Technology";
 import Resume from "../public/resume.pdf";
-// import Footer from "./pages/footer/Footer";
-// import { loadSlim } from "tsparticles-slim";
-// import Particles from "react-particles";
-// import { Paper } from "@mui/material";
 import { CgWebsite } from "react-icons/cg";
 import { SiCodesignal } from "react-icons/si";
 import { IoPaperPlaneOutline } from "react-icons/io5";
@@ -38,6 +23,7 @@ import { motion } from "framer-motion";
 import AOS from "aos";
 import "aos/dist/aos.css";
 import { useEffect } from "react";
+import Footer from "./pages/footer/Footer";
 
 const Item = styled(Box)(({ theme }) => ({
   backgroundColor: theme.palette.mode === "dark" ? null : "#fff",
@@ -51,7 +37,6 @@ const Item1 = styled(Box)(({ theme }) => ({
   textAlign: "center",
   color: theme.palette.text.secondary,
 }));
-const drawerWidth = 240;
 const navItems = [
   { name: "Home", to: "#home" },
   { name: "Services", to: "#service" },
@@ -60,42 +45,8 @@ const navItems = [
   { name: "About", to: "#about" },
 ];
 
-function Header(props) {
-  const { window } = props;
-  const [mobileOpen, setMobileOpen] = React.useState(false);
-
-  const handleDrawerToggle = () => {
-    setMobileOpen((prevState) => !prevState);
-  };
-
-  const drawer = (
-    <Box onClick={handleDrawerToggle} sx={{ textAlign: "center" }}>
-      <Typography variant="h6" sx={{ my: 2 }}>
-        SoftTech
-      </Typography>
-      <Divider />
-      <List>
-        {navItems.map((item) => (
-          <ListItem
-            key={item.to}
-            disablePadding
-            components={NavLink}
-            to={item.to}
-          >
-            <ListItemButton sx={{ textAlign: "center" }}>
-              <ListItemText primary={item.name} />
-            </ListItemButton>
-          </ListItem>
-        ))}
-      </List>
-    </Box>
-  );
-
-  const container =
-    window !== undefined ? () => window().document.body : undefined;
-  // const particlesInit = React.useCallback(async (engine) => {
-  //   await loadSlim(engine);
-  // }, []);
+function Header() {
+  const ismobile = useMediaQuery((theme) => theme.breakpoints.down("sm"));
   useEffect(() => {
     AOS.init({ duration: 600 });
   }, []);
@@ -103,22 +54,9 @@ function Header(props) {
     <Box sx={{ display: "flex" }}>
       <CssBaseline />
       <AppBar component="nav">
-        <Container>
+        <Container disableGutters={ismobile ? true : false}>
           <Toolbar>
-            <IconButton
-              color="inherit"
-              aria-label="open drawer"
-              edge="start"
-              onClick={handleDrawerToggle}
-              sx={{ mr: 2, display: { sm: "none" } }}
-            >
-              <MenuIcon />
-            </IconButton>
-            <Typography
-              variant="h6"
-              component="div"
-              sx={{ flexGrow: 1, display: { xs: "none", sm: "block" } }}
-            >
+            <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
               SoftTech
             </Typography>
             <Box sx={{ display: { xs: "none", sm: "block" } }}>
@@ -128,41 +66,13 @@ function Header(props) {
                 </Button>
               ))}
             </Box>
-            <IconButton
-              color="inherit"
-              sx={{ display: { sm: "none" }, marginLeft: "auto" }}
-            >
-              <MoreIcon />
-            </IconButton>
-            <ListItemIcon
-              color="inherit"
-              sx={{ display: { xs: "none", sm: "block" }, marginLeft: "auto" }}
-            >
+            <ListItemIcon color="inherit" sx={{ marginLeft: "auto" }}>
               <ModeToggle />
             </ListItemIcon>
           </Toolbar>
         </Container>
       </AppBar>
-      <nav>
-        <Drawer
-          container={container}
-          variant="temporary"
-          open={mobileOpen}
-          onClose={handleDrawerToggle}
-          ModalProps={{
-            keepMounted: true, // Better open performance on mobile.
-          }}
-          sx={{
-            display: { xs: "block", sm: "none" },
-            "& .MuiDrawer-paper": {
-              boxSizing: "border-box",
-              width: drawerWidth,
-            },
-          }}
-        >
-          {drawer}
-        </Drawer>
-      </nav>
+
       <Container>
         <Box
           component="main"
@@ -182,120 +92,6 @@ function Header(props) {
                     alignItems: "center",
                   }}
                 >
-                  {/* <Particles
-                  id="tsparticles"
-                  init={particlesInit}
-                  options={{
-                    particles: {
-                      number: {
-                        value: 80,
-                        density: {
-                          enable: true,
-                          value_area: 2130.6986324071363,
-                        },
-                      },
-                      color: {
-                        value: "#00f0ff",
-                      },
-                      shape: {
-                        type: "circle",
-                        stroke: {
-                          width: 0,
-                          color: "#000000",
-                        },
-                        polygon: {
-                          nb_sides: 5,
-                        },
-                        image: {
-                          src: "img/github.svg",
-                          width: 100,
-                          height: 100,
-                        },
-                      },
-                      opacity: {
-                        value: 0.5,
-                        random: false,
-                        anim: {
-                          enable: false,
-                          speed: 1,
-                          opacity_min: 0.1,
-                          sync: false,
-                        },
-                      },
-                      size: {
-                        value: 3,
-                        random: true,
-                        anim: {
-                          enable: false,
-                          speed: 40,
-                          size_min: 0.1,
-                          sync: false,
-                        },
-                      },
-                      line_linked: {
-                        enable: true,
-                        distance: 150,
-                        color: "#09e2ff",
-                        opacity: 0.4,
-                        width: 1,
-                      },
-                      move: {
-                        enable: true,
-                        speed: 3,
-                        direction: "none",
-                        random: false,
-                        straight: false,
-                        out_mode: "out",
-                        bounce: false,
-                        attract: {
-                          enable: false,
-                          rotateX: 600,
-                          rotateY: 1200,
-                        },
-                      },
-                    },
-                    interactivity: {
-                      detect_on: "canvas",
-                      events: {
-                        onhover: {
-                          enable: false,
-                          mode: "repulse",
-                        },
-                        onclick: {
-                          enable: false,
-                          mode: "push",
-                        },
-                        resize: true,
-                      },
-                      modes: {
-                        grab: {
-                          distance: 400,
-                          line_linked: {
-                            opacity: 1,
-                          },
-                        },
-                        bubble: {
-                          distance: 400,
-                          size: 40,
-                          duration: 2,
-                          opacity: 8,
-                          speed: 3,
-                        },
-                        repulse: {
-                          distance: 200,
-                          duration: 0.4,
-                        },
-                        push: {
-                          particles_nb: 4,
-                        },
-                        remove: {
-                          particles_nb: 2,
-                        },
-                      },
-                    },
-                    retina_detect: true,
-                  }}
-                ></Particles> */}
                   <Grid item="true" xs={12} sm={7}>
                     <Box sx={{ textAlign: { xs: "center", sm: "start" } }}>
                       <Typography
@@ -340,6 +136,7 @@ function Header(props) {
                       display: "flex",
                       justifyContent: { xs: "center", sm: "end" },
                       marginTop: { xs: 5, sm: 0 },
+                      maxWidth: "100%",
                     }}
                   >
                     <img
@@ -426,7 +223,7 @@ function Header(props) {
                           >
                             <Card
                               sx={{
-                                width: "auto",
+                                maxWidth: "100%",
                                 height: {
                                   xs: "200px",
                                   sm: "270px",
@@ -465,7 +262,7 @@ function Header(props) {
               <Divider sx={{ mt: 8 }} />
             </Grid>
             <Grid xs={12}>
-              <Item1 elevation={4} id="project">
+              <Item1 elevation={4} id="about">
                 <About />
                 <Divider sx={{ mt: 8 }} />
               </Item1>
@@ -477,8 +274,8 @@ function Header(props) {
               <Divider sx={{ mt: 8 }} />
             </Grid>
             <Grid xs={12}>
-              <Item1 elevation={4} id="about">
-                {/* <Footer /> */}
+              <Item1 elevation={4} id="project">
+                <Footer />
               </Item1>
             </Grid>
           </Grid>
@@ -487,13 +284,5 @@ function Header(props) {
     </Box>
   );
 }
-
-Header.propTypes = {
-  /**
-   * Injected by the documentation to work in an iframe.
-   * You won't need it on your project.
-   */
-  window: PropTypes.func,
-};
 
 export default Header;
