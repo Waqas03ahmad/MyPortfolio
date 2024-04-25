@@ -25,6 +25,7 @@ import "aos/dist/aos.css";
 import { useEffect } from "react";
 import Footer from "./pages/footer/Footer";
 import SpeedDial1 from "./SpeedDail";
+import SimpleSlider from "./pages/projects/Projects";
 
 const Item = styled(Box)(({ theme }) => ({
   backgroundColor: theme.palette.mode === "dark" ? null : "#fff",
@@ -277,10 +278,13 @@ function Header() {
             <Grid xs={12}>
               <Item1 elevation={4} id="project">
                 <Footer />
+                <Box mt={5}>
+                  <SimpleSlider />
+                </Box>
               </Item1>
             </Grid>
           </Grid>
-          <SpeedDial1/>
+          <SpeedDial1 />
         </Box>
       </Container>
     </Box>

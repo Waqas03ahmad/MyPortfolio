@@ -8,25 +8,45 @@ import { FaLinkedin } from "react-icons/fa6";
 import { FaTwitter } from "react-icons/fa";
 
 const actions = [
-  { icon: <FaTwitter size={25} />, name: "Twitter" },
-  { icon: <FaLinkedin size={25} />, name: "Save" },
-  { icon: <FaWhatsapp size={25} />, name: "WhatsApp" },
-  { icon: <FaFacebook size={25} />, name: "FaceBook" },
+  {
+    icon: <FaTwitter size={25} />,
+    name: "Twitter",
+    link: "https://wa.me/03439826613",
+  },
+  {
+    icon: <FaLinkedin size={25} />,
+    name: "Save",
+    link: "https://wa.me/03439826613",
+  },
+  {
+    icon: <FaWhatsapp size={25} />,
+    name: "WhatsApp",
+    link: "https://wa.me/03439826613",
+  },
+  {
+    icon: <FaFacebook size={25} />,
+    name: "FaceBook",
+    link: "https://wa.me/03439826613",
+  },
 ];
 
 export default function SpeedDial1() {
+  const handle = (link) => {
+    window.open(link, "_blank");
+  };
   return (
     <SpeedDial
       ariaLabel="SpeedDial openIcon example"
-      sx={{ position: "fixed", bottom: 16, right: 16 }}
+      sx={{ position: "fixed", bottom: 16, right: 1 }}
       icon={<SpeedDialIcon openIcon={<EditIcon />} />}
-      FabProps={{size:"small",}}
+      FabProps={{ size: "small" }}
     >
       {actions.map((action) => (
         <SpeedDialAction
           key={action.name}
           icon={action.icon}
           tooltipTitle={action.name}
+          onClick={() => handle(action.link)}
         />
       ))}
     </SpeedDial>
