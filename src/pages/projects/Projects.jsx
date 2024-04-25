@@ -20,19 +20,204 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Slider from "react-slick";
 import { Button } from "@mui/material";
+// Card
+import Card from "@mui/material/Card";
+import CardActions from "@mui/material/CardActions";
+import CardContent from "@mui/material/CardContent";
+import CardMedia from "@mui/material/CardMedia";
+import Typography from "@mui/material/Typography";
+import { useState } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { viewOpen } from "../../store/toggling";
+import Backdrop from "@mui/material/Backdrop";
+import Box from "@mui/material/Box";
+import Modal from "@mui/material/Modal";
+import Fade from "@mui/material/Fade";
+import { viewClose } from "../../store/toggling";
+import ReactPlayer from "react-player";
 
-export default function SimpleSlider() {
+const style = {
+  position: "absolute",
+  top: "50%",
+  left: "50%",
+  transform: "translate(-50%, -50%)",
+  minWidth: 400,
+  bgcolor: "background.paper",
+};
+
+export default function SimpleSlider(props) {
+  const [data, setdata] = useState([
+    {
+      watch: false,
+      id: 1,
+      name: "Admin Dashboard",
+      discription:
+        "Admin Dashboard is for administration but this is based on my basic information. Click view to know more",
+      photo:
+        "https://res.cloudinary.com/dt6z3lqko/image/upload/v1713681274/Dashboard_xy1ina.jpg",
+      video:
+        "https://res.cloudinary.com/dt6z3lqko/video/upload/v1714010736/Dashboard_i8ysj3.mp4",
+    },
+    {
+      watch: false,
+      id: 2,
+      name: "Services",
+      discription:
+        "We develope user interfaces UI for your projects professoinally and creatively with React and other libraries...",
+      photo:
+        "https://res.cloudinary.com/dt6z3lqko/image/upload/v1713681275/services_apohhb.jpg",
+      video: "https://youtu.be/usaOHOmsVwM?si=JBQ7pkHvb0Xwa5VL",
+    },
+    {
+      watch: false,
+      id: 3,
+      name: "Languages/Technology",
+      discription:
+        "Jawascript, Python, Django, CSS, Html, Reactjs, Material UI, Bootstrap, and other more AI tools like ChatGPT, coplit etc..",
+      photo:
+        "https://res.cloudinary.com/dt6z3lqko/image/upload/v1713669251/languages_yuzewr.jpg",
+      video:
+        "https://res.cloudinary.com/dt6z3lqko/video/upload/v1714010738/Language_strosf.mp4",
+    },
+    {
+      watch: false,
+      id: 4,
+      name: "Reviews",
+      discription:
+        "The Reviews have shown in the website is for the demo purpose of including reviews functionality in app..",
+      photo:
+        "https://res.cloudinary.com/dt6z3lqko/image/upload/v1713669240/reviews_iyogew.jpg",
+      video:
+        "https://res.cloudinary.com/dt6z3lqko/video/upload/v1714010739/Review_dktoaz.mp4",
+    },
+
+    {
+      watch: false,
+      id: 5,
+      name: "About",
+      discription:
+        "About page contained basic information about me. Here is what and how we solve your poblems professionally...",
+      photo:
+        "https://res.cloudinary.com/dt6z3lqko/image/upload/v1713669248/aboutme_ktlebj.jpg",
+      video:
+        "https://res.cloudinary.com/dt6z3lqko/video/upload/v1714010735/About_uogoak.mp4",
+    },
+    {
+      watch: false,
+      id: 6,
+      name: "Projects",
+      discription:
+        "Projects are already listed about all worked I have done, you can check anything just click on view button..",
+      photo:
+        "https://res.cloudinary.com/dt6z3lqko/image/upload/v1713669240/project_a8prin.jpg",
+      video:
+        "https://res.cloudinary.com/dt6z3lqko/video/upload/v1714010735/About_uogoak.mp4",
+    },
+  ]);
+  const watched = useSelector((e) => e.counter.open);
+  const dispatch = useDispatch();
+  const handlChanged = (a) => {
+    const updated = data.map((val) => {
+      if (a == val.id) {
+        return { ...val, watch: !watched };
+      }
+      return val;
+    });
+
+    setdata(updated);
+  };
   var settings = {
-    dots: true,
     infinite: true,
-    speed: 500,
-    slidesToShow: 1,
+    speed: 4000,
+    slidesToShow: 3,
     slidesToScroll: 1,
+    autoplay: true,
+    autoplaySpeed: 4000,
+    cssEase: "linear",
+    responsive: [
+      {
+        breakpoint: 1024,
+        settings: {
+          slidesToShow: 3,
+          slidesToScroll: 3,
+          infinite: true,
+          dots: true,
+        },
+      },
+      {
+        breakpoint: 600,
+        settings: {
+          slidesToShow: 2,
+          slidesToScroll: 1,
+          initialSlide: 2,
+        },
+      },
+      {
+        breakpoint: 480,
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1,
+        },
+      },
+    ],
   };
   return (
     <Slider {...settings}>
-      {[1, 2, 3, 4, 5, 6, 7, 8, 9].map((e) => (
-        <Button variant="contained"  key={e}>{e}</Button>
+      {data.map((e) => (
+        <div key={e}>
+          <Card sx={{ maxWidth: "95%" }} elevation={4}>
+            <CardMedia
+              component="img"
+              alt="green iguana"
+              height="200"
+              image={e.photo}
+            />
+            <CardContent>
+              <Typography gutterBottom variant="h5" component="div">
+                {e.name}
+              </Typography>
+              <Typography variant="body2" color="text.secondary">
+                {e.discription}
+              </Typography>
+            </CardContent>
+            <CardActions>
+              <Button
+                size="small"
+                onClick={() => {
+                  dispatch(viewOpen());
+                  handlChanged(e.id);
+                }}
+              >
+                Watch Video
+              </Button>
+              <Button size="small">Code</Button>
+            </CardActions>
+          </Card>
+          <Modal
+            aria-labelledby="transition-modal-title"
+            aria-describedby="transition-modal-description"
+            open={watched}
+            onClose={() => dispatch(viewClose())}
+            closeAfterTransition
+            slots={{ backdrop: Backdrop }}
+            slotProps={{
+              backdrop: {
+                timeout: 500,
+              },
+            }}
+          >
+            <Fade in={watched}>
+              <Box sx={style}>
+                <ReactPlayer
+                  className="react-player"
+                  url={props}
+                  width="100%"
+                  height="100%"
+                />
+              </Box>
+            </Fade>
+          </Modal>
+        </div>
       ))}
     </Slider>
   );

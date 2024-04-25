@@ -26,6 +26,7 @@ import { useEffect } from "react";
 import Footer from "./pages/footer/Footer";
 import SpeedDial1 from "./SpeedDail";
 import SimpleSlider from "./pages/projects/Projects";
+import VideoModal from "./pages/projects/Model";
 
 const Item = styled(Box)(({ theme }) => ({
   backgroundColor: theme.palette.mode === "dark" ? null : "#fff",
@@ -268,6 +269,9 @@ function Header() {
                 <About />
                 <Divider sx={{ mt: 8 }} />
               </Item1>
+              <Box mt={5}>
+                <SimpleSlider />
+              </Box>
             </Grid>
             <Grid xs={12}>
               <Item1 elevation={4} id="technology">
@@ -278,9 +282,6 @@ function Header() {
             <Grid xs={12}>
               <Item1 elevation={4} id="project">
                 <Footer />
-                <Box mt={5}>
-                  <SimpleSlider />
-                </Box>
               </Item1>
             </Grid>
           </Grid>
