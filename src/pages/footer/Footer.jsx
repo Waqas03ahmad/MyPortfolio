@@ -8,6 +8,7 @@ import { FaWhatsapp } from "react-icons/fa";
 import { FaFacebook } from "react-icons/fa6";
 import { FaLinkedin } from "react-icons/fa6";
 import { FaTwitter } from "react-icons/fa";
+import { FaGithub } from "react-icons/fa";
 
 const Item = styled(Box)(({ theme }) => ({
   backgroundColor: theme.palette.mode === "dark" ? "#1A2027" : "#fff",
@@ -75,8 +76,8 @@ const Footer = () => {
                 },
                 {
                   id: 5,
-                  icon: <FaWhatsapp size={"25"} />,
-                  link: "https://wa.me/03439826613",
+                  icon: <FaGithub size={"25"} />,
+                  link: "https://github.com/Waqas03ahmad",
                 },
               ].map((e) => (
                 <Link to={e.link} key={e.id}>

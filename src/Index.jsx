@@ -45,8 +45,8 @@ const navItems = [
   { name: "Home", to: "#home" },
   { name: "Services", to: "#service" },
   { name: "Projects", to: "#project" },
-  { name: "Technology", to: "#technology" },
   { name: "About", to: "#about" },
+  { name: "Technology", to: "#technology" },
 ];
 
 function Header() {
@@ -267,13 +267,18 @@ function Header() {
               <Divider sx={{ mt: 8 }} />
             </Grid>
             <Grid xs={12}>
+              <Item1 elevation={4} id="project">
+                <Box mt={5}>
+                  <SimpleSlider />
+                </Box>
+                <Divider sx={{ mt: 8 }} />
+              </Item1>
+            </Grid>
+            <Grid xs={12}>
               <Item1 elevation={4} id="about">
                 <About />
                 <Divider sx={{ mt: 8 }} />
               </Item1>
-              <Box mt={5}>
-                <SimpleSlider />
-              </Box>
             </Grid>
             <Grid xs={12}>
               <Item1 elevation={4} id="technology">
@@ -282,7 +287,7 @@ function Header() {
               <Divider sx={{ mt: 8 }} />
             </Grid>
             <Grid xs={12}>
-              <Item1 elevation={4} id="project">
+              <Item1 elevation={4}>
                 <Footer />
               </Item1>
             </Grid>

@@ -6,6 +6,7 @@ import { FaWhatsapp } from "react-icons/fa";
 import { FaFacebook } from "react-icons/fa6";
 import { FaLinkedin } from "react-icons/fa6";
 import { FaTwitter } from "react-icons/fa";
+import { FaGithub } from "react-icons/fa";
 
 const actions = [
   {
@@ -19,13 +20,18 @@ const actions = [
     link: "https://wa.me/03439826613",
   },
   {
+    icon: <FaGithub size={25} />,
+    name: "GitHub",
+    link: "https://github.com/Waqas03ahmad",
+  },
+  {
     icon: <FaWhatsapp size={25} />,
     name: "WhatsApp",
     link: "https://wa.me/03439826613",
   },
   {
     icon: <FaFacebook size={25} />,
-    name: "FaceBook",
+    name: "Facebook",
     link: "https://www.facebook.com/TechSoftcompany",
   },
 ];

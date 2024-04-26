@@ -114,11 +114,11 @@ export default function SimpleSlider() {
   };
   var settings = {
     infinite: true,
-    speed: 4000,
+    speed: 6000,
     slidesToShow: 3,
     slidesToScroll: 1,
     autoplay: true,
-    autoplaySpeed: 4000,
+    autoplaySpeed: 6000,
     cssEase: "linear",
     responsive: [
       {
