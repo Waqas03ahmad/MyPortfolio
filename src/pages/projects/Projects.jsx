@@ -28,24 +28,9 @@ import CardMedia from "@mui/material/CardMedia";
 import Typography from "@mui/material/Typography";
 import { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { viewOpen } from "../../store/toggling";
-import Backdrop from "@mui/material/Backdrop";
-import Box from "@mui/material/Box";
-import Modal from "@mui/material/Modal";
-import Fade from "@mui/material/Fade";
-import { viewClose } from "../../store/toggling";
-import ReactPlayer from "react-player";
+import { modalContent, viewOpen } from "../../store/toggling";
 
-const style = {
-  position: "absolute",
-  top: "50%",
-  left: "50%",
-  transform: "translate(-50%, -50%)",
-  minWidth: 400,
-  bgcolor: "background.paper",
-};
-
-export default function SimpleSlider(props) {
+export default function SimpleSlider() {
   const [data, setdata] = useState([
     {
       watch: false,
@@ -66,7 +51,8 @@ export default function SimpleSlider(props) {
         "We develope user interfaces UI for your projects professoinally and creatively with React and other libraries...",
       photo:
         "https://res.cloudinary.com/dt6z3lqko/image/upload/v1713681275/services_apohhb.jpg",
-      video: "https://youtu.be/usaOHOmsVwM?si=JBQ7pkHvb0Xwa5VL",
+      video:
+        "https://res.cloudinary.com/dt6z3lqko/video/upload/v1714105408/Service_ennowa.mp4",
     },
     {
       watch: false,
@@ -98,7 +84,7 @@ export default function SimpleSlider(props) {
       discription:
         "About page contained basic information about me. Here is what and how we solve your poblems professionally...",
       photo:
-        "https://res.cloudinary.com/dt6z3lqko/image/upload/v1713669248/aboutme_ktlebj.jpg",
+        "https://res.cloudinary.com/dt6z3lqko/image/upload/v1713669236/about_d16u5w.jpg",
       video:
         "https://res.cloudinary.com/dt6z3lqko/video/upload/v1714010735/About_uogoak.mp4",
     },
@@ -186,6 +172,7 @@ export default function SimpleSlider(props) {
                 onClick={() => {
                   dispatch(viewOpen());
                   handlChanged(e.id);
+                  dispatch(modalContent(e.video));
                 }}
               >
                 Watch Video
@@ -193,30 +180,6 @@ export default function SimpleSlider(props) {
               <Button size="small">Code</Button>
             </CardActions>
           </Card>
-          <Modal
-            aria-labelledby="transition-modal-title"
-            aria-describedby="transition-modal-description"
-            open={watched}
-            onClose={() => dispatch(viewClose())}
-            closeAfterTransition
-            slots={{ backdrop: Backdrop }}
-            slotProps={{
-              backdrop: {
-                timeout: 500,
-              },
-            }}
-          >
-            <Fade in={watched}>
-              <Box sx={style}>
-                <ReactPlayer
-                  className="react-player"
-                  url={props}
-                  width="100%"
-                  height="100%"
-                />
-              </Box>
-            </Fade>
-          </Modal>
         </div>
       ))}
     </Slider>

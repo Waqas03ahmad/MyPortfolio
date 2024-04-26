@@ -27,6 +27,7 @@ import Footer from "./pages/footer/Footer";
 import SpeedDial1 from "./SpeedDail";
 import SimpleSlider from "./pages/projects/Projects";
 import VideoModal from "./pages/projects/Model";
+import { MdFileDownload } from "react-icons/md";
 
 const Item = styled(Box)(({ theme }) => ({
   backgroundColor: theme.palette.mode === "dark" ? null : "#fff",
@@ -126,6 +127,7 @@ function Header() {
                         href={Resume}
                         download={Resume}
                         sx={{ marginY: 2 }}
+                        endIcon={<MdFileDownload />}
                       >
                         Resume
                       </Button>
@@ -286,6 +288,7 @@ function Header() {
             </Grid>
           </Grid>
           <SpeedDial1 />
+          <VideoModal />
         </Box>
       </Container>
     </Box>

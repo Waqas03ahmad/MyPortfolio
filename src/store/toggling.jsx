@@ -2,7 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
   open: false,
-  tableButton: false,
+  content: null,
 };
 
 const toggling = createSlice({
@@ -15,16 +15,12 @@ const toggling = createSlice({
     viewClose: (state) => {
       state.open = false;
     },
-    tableButtonOpen: (state) => {
-      state.tableButton = true;
-    },
-    tableButttonClosed: (state) => {
-      state.tableButton = false;
+    modalContent: (state, action) => {
+      state.content = action.payload;
     },
   },
 });
 
-export const { viewOpen, viewClose, tableButtonOpen, tableButttonClosed } =
-  toggling.actions;
+export const { viewOpen, viewClose, modalContent } = toggling.actions;
 
 export default toggling.reducer;

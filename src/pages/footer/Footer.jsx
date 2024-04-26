@@ -52,26 +52,39 @@ const Footer = () => {
                 justifyContent: { xs: "center", sm: "end" },
               }}
             >
-              <Link to={"https://mui.com/material-ui/react-grid2/"}>
-                <IconButton size="sm" variant="plain" color="neutral">
-                  <FaWhatsapp size={"25"} />
-                </IconButton>
-              </Link>
-              <Link to={"https://mui.com/material-ui/react-grid2/"}>
-                <IconButton size="sm" variant="plain" color="neutral">
-                  <FaFacebook size={"25"} />
-                </IconButton>
-              </Link>
-              <Link to={"https://mui.com/material-ui/react-grid2/"}>
-                <IconButton size="sm" variant="plain" color="neutral">
-                  <FaLinkedin size={"25"} />
-                </IconButton>
-              </Link>
-              <Link to={"https://mui.com/material-ui/react-grid2/"}>
-                <IconButton size="sm" variant="plain" color="neutral">
-                  <FaTwitter size={"25"} />
-                </IconButton>
-              </Link>
+              {[
+                {
+                  id: 1,
+                  icon: <FaWhatsapp size={"25"} />,
+                  link: "https://wa.me/03439826613",
+                },
+                {
+                  id: 2,
+                  icon: <FaFacebook size={"25"} />,
+                  link: "https://www.facebook.com/TechSoftcompany",
+                },
+                {
+                  id: 3,
+                  icon: <FaLinkedin size={"25"} />,
+                  link: "https://wa.me/03439826613",
+                },
+                {
+                  id: 4,
+                  icon: <FaTwitter size={"25"} />,
+                  link: "https://wa.me/03439826613",
+                },
+                {
+                  id: 5,
+                  icon: <FaWhatsapp size={"25"} />,
+                  link: "https://wa.me/03439826613",
+                },
+              ].map((e) => (
+                <Link to={e.link} key={e.id}>
+                  <IconButton size="sm" variant="plain" color="neutral">
+                    {e.icon}
+                  </IconButton>
+                </Link>
+              ))}
             </Box>
           </Item>
         </Grid>

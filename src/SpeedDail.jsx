@@ -15,7 +15,7 @@ const actions = [
   },
   {
     icon: <FaLinkedin size={25} />,
-    name: "Save",
+    name: "LinkedIn",
     link: "https://wa.me/03439826613",
   },
   {
@@ -26,7 +26,7 @@ const actions = [
   {
     icon: <FaFacebook size={25} />,
     name: "FaceBook",
-    link: "https://wa.me/03439826613",
+    link: "https://www.facebook.com/TechSoftcompany",
   },
 ];
 
@@ -37,7 +37,7 @@ export default function SpeedDial1() {
   return (
     <SpeedDial
       ariaLabel="SpeedDial openIcon example"
-      sx={{ position: "fixed", bottom: 16, right: 1 }}
+      sx={{ position: "fixed", bottom: 16, right: { xs: 3, sm: 1 } }}
       icon={<SpeedDialIcon openIcon={<EditIcon />} />}
       FabProps={{ size: "small" }}
     >
