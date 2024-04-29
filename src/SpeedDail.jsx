@@ -5,19 +5,13 @@ import EditIcon from "@mui/icons-material/Edit";
 import { FaWhatsapp } from "react-icons/fa";
 import { FaFacebook } from "react-icons/fa6";
 import { FaLinkedin } from "react-icons/fa6";
-import { FaTwitter } from "react-icons/fa";
 import { FaGithub } from "react-icons/fa";
 
 const actions = [
   {
-    icon: <FaTwitter size={25} />,
-    name: "Twitter",
-    link: "https://wa.me/03439826613",
-  },
-  {
     icon: <FaLinkedin size={25} />,
     name: "LinkedIn",
-    link: "https://wa.me/03439826613",
+    link: "https://www.linkedin.com/in/waqas-ahmad-2080b6284?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
   },
   {
     icon: <FaGithub size={25} />,

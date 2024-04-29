@@ -7,7 +7,6 @@ import { Link } from "react-router-dom";
 import { FaWhatsapp } from "react-icons/fa";
 import { FaFacebook } from "react-icons/fa6";
 import { FaLinkedin } from "react-icons/fa6";
-import { FaTwitter } from "react-icons/fa";
 import { FaGithub } from "react-icons/fa";
 
 const Item = styled(Box)(({ theme }) => ({
@@ -67,12 +66,7 @@ const Footer = () => {
                 {
                   id: 3,
                   icon: <FaLinkedin size={"25"} />,
-                  link: "https://wa.me/03439826613",
-                },
-                {
-                  id: 4,
-                  icon: <FaTwitter size={"25"} />,
-                  link: "https://wa.me/03439826613",
+                  link: "https://www.linkedin.com/in/waqas-ahmad-2080b6284?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
                 },
                 {
                   id: 5,
@@ -95,60 +89,3 @@ const Footer = () => {
 };
 
 export default Footer;
-// import { makeStyles } from '@material-ui/core/styles';
-// import { Typography, Link, Grid } from '@material-ui/core';
-// import FacebookIcon from '@material-ui/icons/Facebook';
-// import TwitterIcon from '@material-ui/icons/Twitter';
-// import LinkedInIcon from '@material-ui/icons/LinkedIn';
-// import InstagramIcon from '@material-ui/icons/Instagram';
-
-// const useStyles = makeStyles((theme) => ({
-//   footer: {
-//     backgroundColor: '#f5f5f5',
-//     padding: theme.spacing(3),
-//     marginTop: 'auto',
-//   },
-//   socialIcon: {
-//     marginRight: theme.spacing(1),
-//     color: '#000',
-//     textDecoration: 'none',
-//   },
-// }));
-
-// const Footer = () => {
-//   const classes = useStyles();
-
-//   return (
-//     <footer className={classes.footer}>
-//       <Grid container spacing={2} justify="center" alignItems="center">
-//         <Grid item xs={12} sm={6}>
-//           <Typography variant="h6">
-//             Quick Links
-//           </Typography>
-//           <nav>
-//             <Link href="#home" color="textPrimary" variant="body1" underline="none">Home</Link><br />
-//             <Link href="#about" color="textPrimary" variant="body1" underline="none">About</Link><br />
-//             <Link href="#portfolio" color="textPrimary" variant="body1" underline="none">Portfolio</Link><br />
-//             <Link href="#contact" color="textPrimary" variant="body1" underline="none">Contact</Link>
-//           </nav>
-//         </Grid>
-//         <Grid item xs={12} sm={6}>
-//           <Typography variant="h6">
-//             Follow Me
-//           </Typography>
-//           <nav>
-//             <Link href="#" className={classes.socialIcon}><FacebookIcon /></Link>
-//             <Link href="#" className={classes.socialIcon}><TwitterIcon /></Link>
-//             <Link href="#" className={classes.socialIcon}><LinkedInIcon /></Link>
-//             <Link href="#" className={classes.socialIcon}><InstagramIcon /></Link>
-//           </nav>
-//         </Grid>
-//       </Grid>
-//       <Typography variant="body2" color="textSecondary" align="center">
-//         &copy; {new Date().getFullYear()} Your Name. All rights reserved.
-//       </Typography>
-//     </footer>
-//   );
-// };
-
-// export default Footer;

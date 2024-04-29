@@ -57,7 +57,7 @@ function Header() {
   return (
     <Box sx={{ display: "flex" }}>
       <CssBaseline />
-      <AppBar component="nav">
+      <AppBar sx={{ bgcolor: "secondary" }}>
         <Container disableGutters={ismobile ? true : false}>
           <Toolbar>
             <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
@@ -96,7 +96,7 @@ function Header() {
                     alignItems: "center",
                   }}
                 >
-                  <Grid item="true" xs={12} sm={7}>
+                  <Grid item="true" xs={12} sm={7} data-aos="fade-right">
                     <Box sx={{ textAlign: { xs: "center", sm: "start" } }}>
                       <Typography
                         variant={"h3"}
@@ -143,6 +143,7 @@ function Header() {
                       marginTop: { xs: 5, sm: 0 },
                       maxWidth: "100%",
                     }}
+                    data-aos="fade-left"
                   >
                     <img
                       src="https://res.cloudinary.com/dt6z3lqko/image/upload/v1713669236/hero1_rdihos.png"

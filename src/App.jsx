@@ -4,6 +4,8 @@ import {
   Experimental_CssVarsProvider as MaterialCssVarsProvider,
   experimental_extendTheme as extendMaterialTheme,
   THEME_ID,
+  ThemeProvider,
+  createTheme,
 } from "@mui/material/styles";
 import CssBaseline from "@mui/material/CssBaseline";
 import DarkMode from "@mui/icons-material/DarkMode";
@@ -29,18 +31,22 @@ export const ModeToggle = () => {
   );
 };
 
+const theme = createTheme({
+});
+
 const materialTheme = extendMaterialTheme();
 
 function App() {
   return (
     <>
-      <MaterialCssVarsProvider theme={{ [THEME_ID]: materialTheme }}>
-        <JoyCssVarsProvider>
-          <CssBaseline enableColorScheme />
-          <Header />
-        </JoyCssVarsProvider>
-      </MaterialCssVarsProvider>
-
+      <ThemeProvider theme={theme}>
+        <MaterialCssVarsProvider theme={{ [THEME_ID]: materialTheme }}>
+          <JoyCssVarsProvider>
+            <CssBaseline enableColorScheme />
+            <Header />
+          </JoyCssVarsProvider>
+        </MaterialCssVarsProvider>
+      </ThemeProvider>
     </>
   );
 }
